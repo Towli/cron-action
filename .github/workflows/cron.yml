@@ -1,0 +1,14 @@
+name: cron
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron:  '*/5 * * * *'
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: curl target
+        run: curl ${{ secrets.TARGET_URI }}
